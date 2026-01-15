@@ -2,17 +2,15 @@
 
 Generate realistic construction zone scenarios for autonomous vehicle testing in [TeraSim](https://github.com/mcity/TeraSim) simulation platform.
 
-## Results
-
 ### Construction Zone Visualization
 
-![Construction Zone Demo](assets/demo_construction_zone.png)
+<img src="assets/demo_construction_zone.png" alt="Construction Zone Demo" style="zoom:10%;" />
 
 *Generated construction zone with traffic cones placed via SUMO/TraCI. Colors indicate zone types: orange (taper-in), red (work zone), green (taper-out).*
 
 ### TomTom Real-World Data Integration
 
-![TomTom Demo](assets/demo_tomtom.png)
+<img src="assets/demo_tomtom.png" alt="TomTom Demo" style="zoom:10%;" />
 
 *Construction zone generated from real TomTom Traffic API data.*
 
@@ -30,8 +28,8 @@ Generate realistic construction zone scenarios for autonomous vehicle testing in
     ─────────────────────────────────────────────────────────►
     Vehicle Travel Direction
 
-    |← Warning →|← Taper-In →|←──── Work Zone ────→|← Taper-Out →|
-        🔺 🔺        🔶 🔶 🔶       🔶 🔶 🔶 🔶 🔶 🔶       🔶 🔶 🔶
+    |← Warning(optional) →|← Taper-In →|←──── Work Zone ────→|← Taper-Out →|
+           🔺 🔺     			🔶 🔶 🔶       🔶 🔶 🔶 🔶 🔶 🔶    🔶 🔶 🔶
 ```
 
 **Pipeline:**
