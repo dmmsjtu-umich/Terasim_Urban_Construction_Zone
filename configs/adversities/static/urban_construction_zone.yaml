@@ -1,0 +1,59 @@
+adversity_cfg:
+  static:
+    urban_construction_zone:
+      _target_: terasim_nde_nade.adversity.static.urban_construction.UrbanConstructionAdversity
+      _convert_: 'all'
+
+      corridor_definition:
+        mode: intersection_count
+        start_edge: ""  # to be filled during merge
+        num_intersections: 3
+        direction: forward
+
+      lane_configuration:
+        lanes_to_close: [0]
+        minimum_open_lanes: 1
+
+      intersection_handling:
+        strategy: merge_before
+        merge_distance: 150
+        merge_taper_length: 100
+        merge_signs:
+          - "Lane Closed Ahead"
+          - "Merge Left"
+          - "Construction Zone"
+
+      construction_vehicles:
+        excavator:
+          count: 1
+          placement: zone_center
+        dump_truck:
+          count: 2
+          placement: distributed
+          spacing: 200
+        warning_vehicle:
+          count: 2
+          placement: [zone_start, zone_end]
+
+      workers:
+        enabled: true
+        count: 4
+        placement: inside_barriers
+        spacing: 50
+
+      zones:
+        warning:
+          length: 200
+          sign_spacing: 50
+        taper:
+          calculate_by_speed: false
+          length: 65
+        buffer:
+          length: 30
+        work:
+          barrier_type: concrete
+          cone_spacing: 10
+
+      start_time: 0
+      end_time: -1
+

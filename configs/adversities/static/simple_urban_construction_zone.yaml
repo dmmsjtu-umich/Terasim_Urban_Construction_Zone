@@ -1,0 +1,56 @@
+adversity_cfg:
+  static:
+    simple_urban_construction_zone:
+      _target_: terasim_nde_nade.adversity.static.urban_construction_simple.SimpleUrbanConstructionAdversity
+      _convert_: 'all'
+
+      # —— Usage Instructions ——
+      # Required/External Input Fields (recommended to be filled by generator or user):
+      # - corridor_definition.start_edge: Starting edge (edge id); auto-selected by generator or manually specified by user
+      # - lane_configuration.lanes_to_close: Lane indices to close (default [0] = rightmost lane)
+      # - lane_configuration.minimum_open_lanes: Minimum number of open lanes to keep (default 1)
+      # Optional/Runtime Auto Fields:
+      # - lane_plans: Computed and written by generator (contains zone segments and spacing per lane); not computed at runtime
+      # - construction_settings.start_position / end_position: If provided, overrides generator; otherwise generator picks randomly
+      # - construction_settings.speed_limit_mph: If null, generator uses lane speed limit (m/s→mph)
+      # - construction_settings.enable_warning_zone: Whether to enable warning zone; false disables warning zone entirely
+
+      corridor_definition:
+        # Starting edge auto-selected by generator script; can also be set manually
+        start_edge: ""  # Auto-generated (required: either script or user provides)
+        # The following fields are only used for upstream filtering/selection logic (no direct impact on Simple class)
+        mode: intersection_count
+        num_intersections: 1
+        direction: forward
+
+      lane_configuration:
+        lanes_to_close: [0]            # Optional, default closes rightmost lane
+        minimum_open_lanes: 1          # Optional, default keeps at least 1 lane open
+
+      construction_settings:
+        # Start/end point generation mode: auto | manual (interactive)
+        # auto: Automatically select reasonable position and width
+        # manual: Interactive manual input for position and width
+        start_end_mode: auto
+        # Runtime window
+        start_time: 0                  # Optional
+        end_time: -1                   # Optional (-1 means permanent)
+
+        # Start/end positions (relative to lane s-axis, in meters). If set, overrides generator; otherwise generator picks randomly
+        start_position: null           # Read by generator
+        end_position: null             # Read by generator
+
+        # Spatial layout/appearance
+        spacing: 20.0                  # Optional: Default spacing for non-taper zones (m)
+        work_zone_offset: 0.0          # Optional: Work zone lateral offset (m), relative to lane center
+        work_zone_width: 2.0           # Optional: Work zone width (m), affects taper endpoint position
+        use_dynamic_spacing: false     # Optional: If enabled, dynamically scales non-taper zone spacing based on mph
+        construction_type: cone        # Optional: cone | barrier | mixed
+
+        # Warning zone control
+        enable_warning_zone: false      # Optional: Whether to enable warning zone; false disables entirely
+        warning_sign_count: 1          # Optional: Number of signs in warning segment; <=0 disables warning segment
+
+        # Speed/length thresholds
+        speed_limit_mph: null          # Optional: Override mph value; null reads lane speed limit
+        min_lane_length: 30.0          # Optional: Used for edge selection/filtering
