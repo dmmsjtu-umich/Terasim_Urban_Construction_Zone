@@ -183,6 +183,14 @@ This module was developed as part of the [TeraSim](https://github.com/mcity/Tera
 - Created multi-format visualization system
 - Built Waymo dataset export functionality for ML training
 
+**Skills Demonstrated:**
+- Problem Solving: Identified testing gap, designed modular solution
+- Visualization: Multi-format outputs (PNG, interactive HTML, satellite maps)
+- Software Engineering: Clean Python codebase with API integration
+- Domain Knowledge: MUTCD standards, traffic simulation, AV testing
+
+> **For detailed portfolio presentation, see [PORTFOLIO.md](PORTFOLIO.md)**
+
 ---
 
 ## License
